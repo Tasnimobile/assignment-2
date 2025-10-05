@@ -5,12 +5,35 @@ let colorSelected;
 
 // Add a row
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    const newRow = document.createElement("tr");
+    
+    // #cols to add is 1 if no rows exist
+    let colsToAdd = numCols;
+    if (table.rows.length === 0) {
+        colsToAdd = 1;
+        numCols = 1;
+    }
+    
+    //add the cells
+    for (let i = 0; i < colsToAdd; i++) {
+        const newCell = document.createElement("td");
+        newCell.onclick = function() {
+            if (colorSelected && colorSelected !== "SELECT") {
+                this.style.backgroundColor = colorSelected.toLowerCase();
+            }
+        };
+        newRow.appendChild(newCell);
+    }
+    
+    table.appendChild(newRow);
+    numRows++;
 }
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    
 }
 
 // Remove a row
