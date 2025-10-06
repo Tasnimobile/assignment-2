@@ -8,44 +8,56 @@ function addR() {
     const table = document.getElementById("grid");
     const newRow = document.createElement("tr");
     
-    // If this is the first row, determine number of columns
-    // Otherwise, match the number of columns in existing rows
+    // #cols to add
     let colsToAdd = numCols;
     if (table.rows.length === 0) {
-        colsToAdd = 1; // Start with 1 column if no rows exist
+        colsToAdd = 1;
         numCols = 1;
     }
     
-    // Create cells for the new row
+    //for each column
     for (let i = 0; i < colsToAdd; i++) {
+        //create a cell
         const newCell = document.createElement("td");
         newCell.onclick = function() {
             if (colorSelected && colorSelected !== "SELECT") {
                 this.style.backgroundColor = colorSelected.toLowerCase();
             }
-        const table = document.getElementById("grid");
-    p    if (table.rows.length === 0) {
+        };
+        //add cell to row
+        newRow.appendChild(newCell);
+    }
+    
+    //add row to table
+    table.appendChild(newRow);
+    numRows++;
+}
+
+// Add a column
+function addC() {
+    const table = document.getElementById("grid");
+    
+    // if nothing yet
+    if (table.rows.length === 0) {
+        //add a row which will add a single column
         addR();
     }
+
     else {
+        //for each row
         for (let i = 0; i < table.rows.length; i++) {
+            //create cell
             const newCell = document.createElement("td");
             newCell.onclick = function() {
                 if (colorSelected && colorSelected !== "SELECT") {
                     this.style.backgroundColor = colorSelected.toLowerCase();
                 }
             };
+            //add cell to row
             table.rows[i].appendChild(newCell);
         }
+        numCols++;
     }
-    numCols++;
-hild(newRow);
-    numRows++;
-}
-
-// Add a column
-function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
 }
 
 // Remove a row
@@ -75,6 +87,6 @@ function fillAll(){
 }
 
 // Clear all cells
-function clearAll(){
+function clearAll() {
     alert("Clicked Clear All"); // Replace this line with your code.
 }
