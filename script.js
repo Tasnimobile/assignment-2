@@ -34,6 +34,22 @@ function addR() {
 function addC() {
     const table = document.getElementById("grid");
     
+    if (table.rows.length === 0) {
+        // If no rows exist, add a new row first
+        addR();
+    }
+    else {
+        for (let i = 0; i < table.rows.length; i++) {
+            const newCell = document.createElement("td");
+            newCell.onclick = function() {
+                if (colorSelected && colorSelected !== "SELECT") {
+                    this.style.backgroundColor = colorSelected.toLowerCase();
+                }
+            };
+            table.rows[i].appendChild(newCell);
+        }
+    }
+    numCols++;
 }
 
 // Remove a row
