@@ -35,7 +35,6 @@ function addC() {
     const table = document.getElementById("grid");
     
     if (table.rows.length === 0) {
-        // If no rows exist, add a new row first
         addR();
     }
     else {
