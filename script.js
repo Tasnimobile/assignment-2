@@ -8,33 +8,23 @@ function addR() {
     const table = document.getElementById("grid");
     const newRow = document.createElement("tr");
     
-    // #cols to add is 1 if no rows exist
+    // If this is the first row, determine number of columns
+    // Otherwise, match the number of columns in existing rows
     let colsToAdd = numCols;
     if (table.rows.length === 0) {
-        colsToAdd = 1;
+        colsToAdd = 1; // Start with 1 column if no rows exist
         numCols = 1;
     }
     
-    //add the cells
+    // Create cells for the new row
     for (let i = 0; i < colsToAdd; i++) {
         const newCell = document.createElement("td");
         newCell.onclick = function() {
             if (colorSelected && colorSelected !== "SELECT") {
                 this.style.backgroundColor = colorSelected.toLowerCase();
             }
-        };
-        newRow.appendChild(newCell);
-    }
-    
-    table.appendChild(newRow);
-    numRows++;
-}
-
-// Add a column
-function addC() {
-    const table = document.getElementById("grid");
-    
-    if (table.rows.length === 0) {
+        const table = document.getElementById("grid");
+    p    if (table.rows.length === 0) {
         addR();
     }
     else {
@@ -49,6 +39,13 @@ function addC() {
         }
     }
     numCols++;
+hild(newRow);
+    numRows++;
+}
+
+// Add a column
+function addC() {
+    alert("Clicked Add Col"); // Replace this line with your code.
 }
 
 // Remove a row
