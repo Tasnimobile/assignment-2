@@ -78,15 +78,38 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    const color = colorSelected ? colorSelected.toLowerCase() : null;
+    if (!color || color === "select") return;
+
+    for (const row of table.rows) {
+        for (const cell of row.cells) {
+            if (cell.style.backgroundColor === "" || cell.style.backgroundColor === "white") {
+                cell.style.backgroundColor = color;
+            }
+        }
+    }
 }
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    const color = colorSelected ? colorSelected.toLowerCase() : null;
+    if (!color || color === "select") return;
+
+    for (const row of table.rows) {
+        for (const cell of row.cells) {
+            cell.style.backgroundColor = color;
+        }
+    }
 }
 
 // Clear all cells
 function clearAll() {
-    alert("Clicked Clear All"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    for (const row of table.rows) {
+        for (const cell of row.cells) {
+            cell.style.backgroundColor = "white";
+        }
+    }
 }
